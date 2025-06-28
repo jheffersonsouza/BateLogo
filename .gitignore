@@ -22,7 +22,3 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-
-# Componentes do shadcn
-src/components/ui
-src/lib
