@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Check } from "lucide-react";
+import '@/styles/CardsGrid.css'
 
 type CardsGridProps = {
   naipe_display: string
@@ -49,22 +50,17 @@ const CardsGrid = ({
     }
   }
   return (
-    <div className="mt-6">
-      <div className="mb-6 text-center">
-        <h2 className="text-2xl font-bold text-white mb-2">
-          {naipe_display}
-        </h2>
-        <div className="flex items-center justify-center gap-4">
-          <Badge variant="secondary" className="text-lg px-4 py-2">
+    <div className="mt-0">
+        <div className="count_box flex items-center justify-center gap-4 rounded-full max-w-55 mx-auto">
+          <Badge variant="secondary" className="text-lg px-4 py-2 lb_txt">
             Total: {countSelectedCards()}/{maxSelection}
           </Badge>
-          <Badge variant="outline" className="text-sm px-3 py-1">
+          <Badge variant="outline" className="text-sm px-3 py-1 lb_txt">
             {naipe_display}: {selectedCards.filter(c => c.startsWith(naipe + '_')).length}
           </Badge>
-        </div>
       </div>
 
-      <div className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-7 gap-4 max-w-6xl mx-auto px-4">
+      <div className="grid grid-cols-5 md:grid-cols-6 lg:grid-cols-7 gap-4 mx-auto px-40">
         {cardValues.map(cardValue => {
           cardValue = naipe + "_" + cardValue
           const isSelected = selectedCards.includes(cardValue);
@@ -72,9 +68,9 @@ const CardsGrid = ({
 
           return (
             <Card key={cardValue} onClick={() => canSelect && handleCardClick(cardValue)}
-              className={`
+              className={`w-[10vw]
                 relative cursor-pointer transition-all duration-200 transform hover:scale-105 hover:shadow-lg
-                ${isSelected ? 'ring-2 ring-primary shadow-lg border-primary' : 'hover:border-primary/50'}
+                ${isSelected ? 'ring-2 ring-primary shadow-lg border-primary rounded' : 'hover:border-primary/50'}
                 ${!canSelect ? 'opacity-50 cursor-not-allowed hover:scale-100 hover:shadow-none' : ''}
               `}>
               <CardContent>
@@ -83,7 +79,7 @@ const CardsGrid = ({
               </CardContent>
 
               {isSelected && (
-                <div className="absolute -top-2 -right-2 bg-primary text-primary-foreground rounded-full w-6 h-6 flex items-center justify-center shadow-md">
+                <div className="absolute -top-2 -right-2 bg-green-400 text-primary-foreground rounded-full w-6 h-6 flex items-center justify-center">
                   <Check className="w-3 h-3" />
                 </div>
               )}

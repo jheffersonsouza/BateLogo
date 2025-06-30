@@ -1,0 +1,27 @@
+@layer components {
+    .cards_holder {
+        position: relative;
+        min-height: 230px;
+        height: 230px;
+        overflow: visible;
+    }
+    
+    .card_k {
+        transition: all 0.3s ease;
+    }
+    .card_k:hover {
+        z-index: 100 !important;
+    }
+    .button {
+    backdrop-filter: blur(1px);
+    box-shadow: rgba(0, 0, 0, 1) 0px 5px 15px;
+    background-color: rgba(0, 0, 0, 0.2) !important;
+    border: 2px solid #ffffff4d !important;
+
+}
+  }
+
+
+#root {
+    background-color: rgb(232, 230, 230);
+}

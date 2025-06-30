@@ -1,0 +1,1 @@
+1. Fazer a borda preta no hover das cartas.

@@ -3,12 +3,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Button } from '@/components/ui/button'
 import CardsGrid from '@/components/CardsGrid'
 import { useState } from 'react'
+import { useNavigate } from "react-router";
 
-type SetupProps = {
-  onFinish: (cards: string[]) => void
-}
-
-function Setup({ onFinish }: SetupProps) {
+function Setup() {
+  const navigate = useNavigate()
   const [selectedCards, setSelectedCards] = useState<string[]>([])
   const maxCards = 9
   const canProceed = selectedCards.length == maxCards
@@ -20,9 +18,14 @@ function Setup({ onFinish }: SetupProps) {
     setSelectedCards(prev => prev.filter(card => card !== cardValue))
   }
 
+  const proceed = () => {
+    // mandar as cartas pro back
+    navigate('/')
+  }
+
   return (
     <>
-      <div className="min-h-screen w-screen flex flex-col justify-center pt-10 gap-y-10 overflow-y-auto">
+      <div className="teste min-h-screen w-screen flex flex-col justify-center pt-1 gap-y-10 overflow-y-auto ">
         <Tabs defaultValue="naipe_espada">
           <div className="flex justify-center">
             <TabsList className="naipe_menu">
@@ -75,9 +78,11 @@ function Setup({ onFinish }: SetupProps) {
         </Tabs>
         <Button
           variant='outline'
-          className='w-20 mx-auto rounded-full'
+          className={`proceed_btn text-white w-20 mx-auto rounded-full
+            ${canProceed ? 'proceed_btn_enabled' : 'proceed_btn_disabled'}
+            `}
           disabled={!canProceed}
-          onClick={() => onFinish(selectedCards)}
+          onClick={proceed}
         >
           Próximo
         </Button>

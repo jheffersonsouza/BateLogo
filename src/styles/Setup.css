@@ -66,20 +66,48 @@
 }
 
 @layer components {
+
   .naipe_menu_img {
     @apply w-full h-full;
   }
 
   .naipe_menu {
-    @apply flex justify-center gap-2.5;
+    backdrop-filter: blur(1px);
+    box-shadow: rgba(0, 0, 0, 1) 0px 5px 15px;
+    background-color: rgba(0, 0, 0, 0.5);
+    background: linea;
+    border: 2px solid #ffffff4d !important;
+
+    @apply flex justify-center gap-5 rounded-full p-2 w-[25vw] h-[15vh] min-w-[5vw] min-h-[3vh];
   }
 
   .naipe_menu_trigger {
-    @apply flex w-[100px] h-[102px] min-w-[100px] min-h-[102px] p-0 bg-transparent;
+    @apply flex w-[67px] h-[68px] min-w-[67px] min-h-[68px] p-0 bg-transparent;
+  }
+
+  .proceed_btn {
+    backdrop-filter: blur(1px);
+    box-shadow: rgba(0, 0, 0, 1) 0px 5px 15px;
+  }
+  .proceed_btn_enabled {
+    background-color: rgba(0, 0, 0, 0.2) !important;
+    border: 2px solid #09ff1d94 !important;
+  }
+  .proceed_btn_disabled {
+    background-color: rgba(0, 0, 0, 0.7) !important;
+    border: 2px solid #81818194 !important;
+  
+    @apply cursor-not-allowed;
+  }
+  .proceed_btn_disabled:active {
+    border: 2px solid #ff0000 !important;
   }
 
 }
-html, body, #root {
+
+html , body, #root {
   height: 100%;
   margin: 0;
+  background-image: url('background.avif');
+
 }
